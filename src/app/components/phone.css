@@ -1,0 +1,23 @@
+
+
+.phone {
+    width: 320px;
+    height: 620px;
+    background-image: url('/Help-zap.gif');
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    border-radius: 3rem;
+    border: 16px solid #1c1c1c;
+    display: grid;
+    justify-content: center;
+    box-shadow: 0 0 50px 18px rgba(250, 241, 255, 0.599);
+}
+
+.notch{
+	width: 150px;
+	height: 30px;
+	background-color: #1c1c1c;
+	border-radius: 0 0 3rem 3rem;
+	transform: translateY(-2px);
+}

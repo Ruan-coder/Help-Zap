@@ -1,0 +1,20 @@
+.button {
+
+    border-radius: 4px;
+    padding: 10px 10px;
+    background: linear-gradient(to bottom, #fcd34d, #fbbf24, #f59e0b);
+    color: black;
+    font-weight: 600;
+    transition: all 0.05s;
+  }
+  
+  .button:hover {
+    background: linear-gradient(to right, #f9c802, #f8a900, #f79900);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+  }
+  
+  .button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(247, 210, 30, 0.5);
+  }
