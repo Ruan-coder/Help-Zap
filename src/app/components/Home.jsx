@@ -3,28 +3,24 @@
 import Login from "./Login";
 
 export default function Home() {
-
-
-
-
     return (
-        <section className="relative w-full h-screen flex items-center overflow-hidden">
-            <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <section className="relative w-full md:h-screen flex flex-col md:flex-row items-center overflow-hidden bg-zinc-900">
+            <div className="absolute inset-0 w-full h-full overflow-hidden md:block hidden">
                 <div className="overlay"></div>
                 <video className="w-full h-full object-cover" autoPlay muted loop>
                     <source src="/bg home.mp4" type="video/mp4" />
                 </video>
             </div>
-            <div className="z-40 w-full grid grid-cols-2 items-center justify-between">
-                <div className="grid grid-cols-1 gap-5 text-white md:px-16 px-5 mt-10">
-                    <h1 className="md:text-5xl text-4xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            <div className="z-40 w-full grid grid-cols-1 md:grid-cols-2 items-center justify-between px-5 md:px-16 mt-10 md:mt-0">
+                <div className="grid grid-cols-1 gap-5 text-white">
+                    <h1 className="text-4xl md:text-5xl md:mt-0 mt-20">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </h1>
-                    <div >
-                        <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius? Odit, maxime adipisci dolores, ut ea accusantium aliquid fugiat perferendis praesentium, voluptas id aliquam qui dolore! Facere voluptatem a culpa.
+                    <div>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius? Odit, maxime adipisci dolores, ut ea accusantium aliquid fugiat perferendis praesentium, voluptas id aliquam qui dolore! Facere voluptatem a culpa.
                         </p>
-
-                        <div className="mt-5">
+                        <div className="mt-5 md:text-start text-center">
                             <a href="">
                                 <button className="button">
                                     Demonstração
@@ -33,8 +29,10 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <Login />
+                <div className="my-10 md:my-0">
+                    <Login />
+                </div>
             </div>
         </section>
     )
-} 
+}

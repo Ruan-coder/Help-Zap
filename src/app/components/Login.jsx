@@ -1,82 +1,94 @@
 'use client';
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Login() {
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [keepLoggedIn, setKeepLoggedIn] = useState(false);
+    const [message, setMessage] = useState('');
+    const [messageType, setMessageType] = useState('');
 
     const handleLogin = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await fetch('link api', {
+            const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'aplication/json',
+                    'Content-type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ email: username, password }),
             });
 
             if (!response.ok) {
-                throw new Error('Login Falied');
+                throw new Error('Credenciais inválidas');
             }
 
-
-            //Recebendo Token
             const data = await response.json();
             const token = data.token;
 
-            // Armazena o token 
-            localStorage.setItem('token', token);
+            if (keepLoggedIn) {
+                localStorage.setItem('token', token);
+            } else {
+                sessionStorage.setItem('token', token);
+            }
 
-
+            setMessageType('success');
+            setMessage('Login bem-sucedido!');
         } catch (error) {
-            setError('Erro')
+            setMessageType('error');
+            setMessage(error.message || 'Erro ao realizar login');
         }
-    }
+    };
 
     return (
-        <div className="flex flex-row items-center justify-center">
-            <form onSubmit={handleLogin}>
-                <div className="flex flex-col gap-5">
-                    <div className="w-[25rem] flex flex-row items-center justify-between ">
+        <div className="flex flex-col items-center justify-center px-5">
+            <form onSubmit={handleLogin} className="glass px-6 py-8 flex flex-col items-center w-full max-w-md">
+                <Image src={'/help-zap.png'} width={80} height={80} alt="logo help-zap" className="mb-6" />
+                <div className="flex flex-col gap-4 w-full">
+                    <div className="flex flex-col gap-2">
                         <label htmlFor="user" className="text-white">Usuário</label>
                         <input
                             onChange={(e) => setUsername(e.target.value)}
                             type="email"
                             name="user"
                             id="user-input"
-                            placeholder="digite seu email"
-                            className="w-80 h-12 bg-transparent border rounded-md px-3 text-white" />
+                            placeholder="Digite seu email"
+                            className="w-full h-12 bg-transparent border rounded-md px-3 text-white" />
                     </div>
-                    <div >
-                        <div className="w-[25rem] flex flex-row items-center justify-between ">
-                            <label htmlFor="user" className="text-white">Senha</label>
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="password" className="text-white">Senha</label>
+                        <input
+                            onChange={(e) => setPassword(e.target.value)}
+                            type="password"
+                            name="password"
+                            id="password-input"
+                            placeholder="Digite sua senha"
+                            className="w-full h-12 bg-transparent border rounded-md px-3 text-white" />
+                        <div className="flex items-center mt-3">
                             <input
-                                onChange={(e) => setPassword(e.target.value)}
-                                type="password"
-                                name="password"
-                                id="password-input"
-                                placeholder="digite sua senha"
-                                className="w-80 h-12 bg-transparent border rounded-md px-3 text-white" />
+                                type="checkbox"
+                                onChange={(e) => setKeepLoggedIn(e.target.checked)} />
+                            <span className="text-white ml-2">Manter logado</span>
                         </div>
-                        <p className="mt-5">
-                            <input type="checkbox"/><span className="text-white ml-3">Manter logado</span>
-                        </p>
                     </div>
-                    <div className="text-end">
-                        <Link href="/esqueceu-senha" className='text-white font-extralight text-sm underline mr-5'>
+                    <div className="flex flex-col items-end gap-3">
+                        <Link href="/EsqueceuSenha" className="text-white font-extralight text-sm underline">
                             Esqueceu sua senha?
                         </Link>
-                        <button className='button w-24'>
-                            Login
-                        </button>
+                        <button className="button w-full md:w-32">Login</button>
                     </div>
                 </div>
+                {message && (
+                    <div
+                        className={`mt-5 p-3 w-full text-center rounded-md ${messageType === 'success' ? 'bg-green-500' : 'bg-red-500'} text-white`}
+                    >
+                        {message}
+                    </div>
+                )}
             </form>
         </div>
-    )
+    );
 }
