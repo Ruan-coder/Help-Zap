@@ -7,12 +7,15 @@ export default function Footer() {
     return (
         <footer className="bg-gray-900 text-white py-8 " id='footer'>
             <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center">
-                
+
                 <div className="mb-6 md:mb-0 md:w-1/3">
-                    <Image src={"/help-zap.png"} width={100} height={100} alt='logo help-zap' className='mb-5'></Image>
-                    <p className="text-sm text-gray-400">
-                        A cidade fala, a prefeitura resolve! Nosso objetivo é facilitar a comunicação entre a população e os órgãos públicos.
-                    </p>
+                    <img
+                        src="/images/help-zap.png"
+                        alt="Help-Zap Logo"
+                        width={100}
+                        height={100}
+                        className='mb-5'
+                    />
                 </div>
 
                 <div className="mb-6 md:mb-0 md:w-1/3 flex flex-col md:flex-row md:justify-around gap-6">

@@ -14,11 +14,11 @@ export default function Home() {
             <div className="z-40 w-full grid grid-cols-1 md:grid-cols-2 items-center justify-between px-5 md:px-16 mt-10 md:mt-0">
                 <div className="grid grid-cols-1 gap-5 text-white">
                     <h1 className="text-4xl md:text-5xl md:mt-0 mt-20">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        HelpZap
                     </h1>
                     <div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius? Odit, maxime adipisci dolores, ut ea accusantium aliquid fugiat perferendis praesentium, voluptas id aliquam qui dolore! Facere voluptatem a culpa.
+                        <p >
+                            A cidade fala, a prefeitura resolve! Nosso objetivo é facilitar a comunicação entre a população e os órgãos públicos
                         </p>
                         <div className="mt-5 md:text-start text-center">
                             <a href="">

@@ -46,7 +46,18 @@ export default function Login() {
     return (
         <div className="flex flex-col items-center justify-center px-5">
             <form onSubmit={handleLogin} className="glass px-6 py-8 flex flex-col items-center w-full max-w-md">
-                <Image src={'/help-zap.png'} width={80} height={80} alt="logo help-zap" className="mb-6" />
+                {/* <Image
+                    src="/images/help-zap.png"
+                    width={80} height={80}
+                    alt="logo help-zap"
+                /> */}
+                <img
+                    src="/images/help-zap.png"
+                    alt="Help-Zap Logo"
+                    width={100}
+                    height={100}
+                    className="mb-5"
+                />
                 <div className="flex flex-col gap-4 w-full">
                     <div className="flex flex-col gap-2">
                         <label htmlFor="user" className="text-white">Usuário</label>
